@@ -1,0 +1,6 @@
+version: "3.8"
+services:
+  exch-publisher:
+    build: ./exch-publisher/
+  exch-subscriber:
+    build: ./exch-subscriber/

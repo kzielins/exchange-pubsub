@@ -5,13 +5,11 @@ from google.cloud import pubsub_v1
 from google.api_core.exceptions import AlreadyExists
 
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="exchnage-pubsub-sa.json"
-
-
 # projects/exchnage-pubsub/topics/my-topic
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="exchnage-pubsub-sa.json"
+SERVICE_ACCOUNT_PATH='./exchnage-pubsub-sa.json'
 PROJECT_ID = "exchnage-pubsub"
 TOPIC_ID = "my-topic"
-DELAY_SLEEP = 5
 SUBSCRIPTION_ID="my-sub"
 # Number of seconds the subscriber should listen for messages
 TIMEOUT = 5.0
@@ -19,14 +17,13 @@ DELAY_SLEEP = 5
 
 
 
+
 def create_subscription(project_id, topic_id, subscription_id):
   """create subscription if not exist  project_id -> topic if not exists"""
-  subscriber = pubsub_v1.SubscriberClient()
+  subscriber = pubsub_v1.SubscriberClient.from_service_account_json(SERVICE_ACCOUNT_PATH)
   subscription_path = subscriber.subscription_path(project_id, subscription_id)
   try:
     topic_path = subscriber.topic_path(project_id, topic_id)
-    # The `subscription_path` method creates a fully qualified identifier
-    # in the form `projects/{project_id}/subscriptions/{subscription_id}`
     with subscriber:
       subscription = subscriber.create_subscription(
           request={"name": subscription_path, "topic": topic_path}
@@ -37,13 +34,14 @@ def create_subscription(project_id, topic_id, subscription_id):
     print(f' [WARNING] Subscription subscription_path: {subscription_path} already exists')
 
 def callback(message: pubsub_v1.subscriber.message.Message) -> None:
+    """callback for subscriber """
     print(f"Received {message.data}.")
     message.ack()
  
 
 create_subscription(PROJECT_ID, TOPIC_ID, SUBSCRIPTION_ID)
     
-subscriber = pubsub_v1.SubscriberClient()
+subscriber = pubsub_v1.SubscriberClient.from_service_account_json(SERVICE_ACCOUNT_PATH)
 # The `subscription_path` method creates a fully qualified identifier
 # in the form `projects/{project_id}/subscriptions/{subscription_id}`
 subscription_path = subscriber.subscription_path(PROJECT_ID, SUBSCRIPTION_ID)

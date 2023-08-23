@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "exchnage-pubsub",
+  "private_key_id": "da23ef57fc6c25810c0f783e747048750ced466b",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDNAJFbVxI4W3ul\nFeFywQlnZqPzEIbanyxLkTh+vhVQ6TQrKcJwe5BPlhL8dXEMhtoO1LpNCeU7SkCk\n3mmoQ6ONI+ae26aq4WNAOwj0UJQpzLVFW9Cqg9VQmfZXfAhN7ZTl1zm7Y4MFYYLE\nJSNeIUK3uHxYHfm+gXTgYGIyacPP7w9ilKd2m1YKy1+9IUmw0eXeapBw31o4sefx\nPUQf+xX7SVbOa1alCFbum2bJBElXzed4iQZcQ1YNJjY7ipsJ7liv/DPDKpVb87gN\n/Gz4DNLBZ3NzTMyaVWDHDDAxuz4ARn18pXGoLlZWqnHFlHNT4AL6Cnh4TgJvBZX+\nVQyQgAV/AgMBAAECggEAVPsgxpQELg+iZG97G0ZxXwdZ/HdD59nnE1ZabJPgoz9h\nDGmNvHJEgvFr4nLOz8oRF+fQaQIqoBbqUE4Qz5tmb6pLvlvArgKr0aMHVbwXh3Jg\nTKXAjQcEhRql12NH0AImYNcFDCy20iK3ghcBH9K65Q0Zoq+eaX4h1Kev3UUh0o6B\nr+rKWZQYCdNxb7Mc5ku+evadxWf2GQiEBf9f+CddiBzbqA1GuusyVrxhBvxYxmQA\nrtQS/3N9gwDQA9b6Dl4zo/4AjVrTzK68sqhqBZTcFBaAynpojpPB3Sdj6krfODuX\ncmUawbeBlt3Zfr9QyyxqLqneHJhPbsHAEIt2LOBzYQKBgQDtAhm2C6WNNSpxBEse\nkAwoqudA+PIL/AaGqKTLTKbVfKC+w9+dZMj34VLxOxJ4N1IM5AftL7b0YlZVXynf\nK/Ay8mJdSEGMp4D8LAeZMb2edr/E/2tsK63WCZO4u78vq/Zjti/XKOLITiFkcKi+\n6BpWK1QAYs/yy/26AS2Y0EpW3wKBgQDdbeiEIrIJXTZFVRfqq7HYLp3j/ApQeZo0\nvaY8D5Tb8R7/Eslv5BFH5nB1G6/ZO7Cu7fWXlDTZ9PfZxMJWqR9ZcC9KkE5wPEyw\niJn6ae6Qn6Ur3lqc7GlC0w5rViCaYfzLdLWfQe9EfhfGRZO9joSBuriqsM7jBdzD\nyuCX+XVFYQKBgQCl6dCB5glQnqVFVJIZpRE97tXQX/Vhel4/KhOi1df8nzAQGyKR\nFhqxnCTqBkZZrbBcoc0Ct2JGFgkF3oZ7WlDd+VvunUR16FSdM11mWrG5GrwIdh2H\nLdSVf0LQEW43OxRSnRlEb7TCMB+kJlGawvSc2dwGISYde7v02BpJXZaM1QKBgEhG\n5+65pIOJ+X0IGZZwFM0L6l3Ql01NZBhzDx/rthtUyVlZOIddWoatoWeYcf3mjfWL\nlu6zYc0DOSPMJeNDsQfwpn8gO3pHNIErFZe3nDd45OE84zb1tCYr3jkLE/lQosOG\nhQJG82LYBcqiS2dEbdwqpryQmfdgon8GaekxdCYBAoGAdj51OGqcYneIdUcnVTXs\nJTtGK3m2F9gDMSUyGFEMEMRnDt7ad4NZRNYkuMS+V13AjH3frBTTJ4c5J05kaHPn\nIyna1kZkCz1oicI6BEAn202gsV+gkKxts3g43bValxlZ171dweIGxluFgfH62zty\nHF3EjduZvtWHEfWz+e/ff88=\n-----END PRIVATE KEY-----\n",
+  "client_email": "python-run@exchnage-pubsub.iam.gserviceaccount.com",
+  "client_id": "115414636771583501979",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/python-run%40exchnage-pubsub.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

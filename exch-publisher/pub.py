@@ -6,8 +6,7 @@ from google.cloud import pubsub_v1
 from google.api_core.exceptions import AlreadyExists
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="exchnage-pubsub-sa.json"
-
-
+SERVICE_ACCOUNT_PATH='./exchnage-pubsub-sa.json'
 PROJECT_ID = "exchnage-pubsub"
 TOPIC_ID = "my-topic"
 DELAY_SLEEP = 5
@@ -16,7 +15,7 @@ DELAY_SLEEP = 5
 
 def create_topic(project_id, topic_id):
   """Create pubsub project_id -> topic if not exists"""
-  publisher = pubsub_v1.PublisherClient()
+  publisher = pubsub_v1.PublisherClient.from_service_account_json(SERVICE_ACCOUNT_PATH)
   #create topic if not exist  
   topic_path = publisher.topic_path(project_id, topic_id)
   try:
@@ -28,7 +27,7 @@ def create_topic(project_id, topic_id):
  
 def publish_data(project_id, topic_id, data_str):
   """publish data_str to topic_id"""
-  publisher = pubsub_v1.PublisherClient()
+  publisher = pubsub_v1.PublisherClient.from_service_account_json(SERVICE_ACCOUNT_PATH)
   #create topic if not exist  
   topic_path = publisher.topic_path(project_id, topic_id)
   data = data_str.encode("utf-8")
