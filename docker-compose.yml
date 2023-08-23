@@ -1,6 +1,20 @@
 version: "3.8"
 services:
   exch-publisher:
-    build: ./exch-publisher/
+    build: 
+      context: ./exch-publisher/
+    environment:
+      PROJECT_ID: exchnage-pubsub
+      TOPIC_ID: exch_CHFPLN
+      EXCH_URL: https://internetowykantor.pl/kurs-franka/
+      DELAY_SLEEP: 5
   exch-subscriber:
-    build: ./exch-subscriber/
+    build: 
+      context: ./exch-subscriber/
+    environment:
+      PROJECT_ID: exchnage-pubsub
+      TOPIC_ID: exch_CHFPLN
+      SUBSCRIPTION_ID: sub_CHFPLN
+      DELAY_SLEEP: 5
+    depends_on: 
+      - exch-publisher

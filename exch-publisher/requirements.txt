@@ -1,2 +1,2 @@
-google-cloud-pubsub
-lxml
+google-cloud-pubsub==2.18.3
+lxml==4.9.3

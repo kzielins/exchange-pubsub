@@ -1,3 +1,9 @@
+"""
+Docs for pub GCP pubsub
+
+TODO !!
+
+"""
 import os,json,time,datetime
 import requests
 import lxml.html
@@ -5,12 +11,25 @@ import lxml.html
 from google.cloud import pubsub_v1
 from google.api_core.exceptions import AlreadyExists
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="exchnage-pubsub-sa.json"
-SERVICE_ACCOUNT_PATH='./exchnage-pubsub-sa.json'
-PROJECT_ID = "exchnage-pubsub"
-TOPIC_ID = "my-topic"
-DELAY_SLEEP = 5
-
+#os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="exchnage-pubsub-sa.json"
+SERVICE_ACCOUNT_PATH='./exchnage-pubsub-sa.json'  
+PROJECT_ID = os.environ.get('PROJECT_ID',"exchnage-pubsub")
+TOPIC_ID = os.environ.get('TOPIC_ID',"my-topic")
+DELAY_SLEEP = int(os.environ.get('DELAY_SLEEP',5))
+EXCH_URL=os.environ.get('EXCH_URL',"https://internetowykantor.pl/kurs-euro/")
+  
+def main():
+  """Continuously publish messages to TOPIC_ID"""
+  
+  #create topic
+  create_topic(PROJECT_ID, TOPIC_ID)
+  
+  while 1:
+    data=get_exch(EXCH_URL)
+    #print(f"exchange values {data}")
+    data_str = json.dumps(data)
+    publish_data(PROJECT_ID, TOPIC_ID, data_str)
+    time.sleep(DELAY_SLEEP)
 
 
 def create_topic(project_id, topic_id):
@@ -49,15 +68,6 @@ def get_exch(web_http):
   return parsed_exch
 
 
-#create topic
-create_topic(PROJECT_ID, TOPIC_ID)
 
-while 1:
-    data=get_exch("https://internetowykantor.pl/kurs-euro/")
-    #print(f"exchange values {data}")
-    data_str = json.dumps(data)
-    publish_data(PROJECT_ID, TOPIC_ID, data_str)
-    time.sleep(DELAY_SLEEP)
-
-
- 
+if __name__ == '__main__':
+  main()
