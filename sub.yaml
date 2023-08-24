@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pubsub-subscriber
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pubsub-subscriber
+  template:
+    metadata:
+      labels:
+        app: pubsub-subscriber
+    spec:
+      containers:
+      - name: subscriber
+        image: gcr.io/exchnage-pubsub/exchange-pubsub-exch-subscriber:latest

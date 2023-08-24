@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pubsub-publisher
+spec:
+  selector:
+    matchLabels:
+      app: pubsub-publisher
+  template:
+    metadata:
+      labels:
+        app: pubsub-publisher
+    spec:
+      containers:
+      - name: publisher
+        image: gcr.io/exchnage-pubsub/exchange-pubsub-exch-publisher:latest
