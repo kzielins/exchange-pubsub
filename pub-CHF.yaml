@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pubsub-publisher-chf
+spec:
+  selector:
+    matchLabels:
+      app: pubsub-publisher-chf
+  template:
+    metadata:
+      labels:
+        app: pubsub-publisher-chf
+    spec:
+      containers:
+      - name: publisher-chf
+        image: gcr.io/exchnage-pubsub/exchange-pubsub-exch-publisher:latest
+        env:
+        - name: TOPIC_ID
+          value: "exch_CHFPLN"
+        - name: EXCH_URL
+          value: "https://internetowykantor.pl/kurs-franka/"
+        - name: SUBSCRIPTION_ID
+          value: "sub_CHFPLN"
+

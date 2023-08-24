@@ -64,13 +64,20 @@ gcloud config set project exchnage-pubsub
 gcloud config set compute/zone europe-central2-a
 gcloud container clusters get-credentials  exchnage-pubsub-cmd2-cluster  --location europe-central2-a
 
+## secrets
+https://stackoverflow.com/questions/66163784/how-i-can-send-a-credentials-json-file-to-kubernetes-pod 
+
+kubectl apply -f secret-exchnage-pubsub-sa-V2.yaml
+
+
+
 ## create k8 cluster
 gcloud container clusters create exchnage-pubsub-cmd2-cluster --num-nodes=3 --location europe-central2-a
 
 
 # get config kubectl
 kubectl config view
-kubectl get pods --cluster gke_exchnage-pubsub_europe-central2-a_exchnage-pubsub-cmd2-cluster
+kubectl get pods  
 
 
 ## run docker on k8
@@ -79,6 +86,17 @@ kubectl create deployment exchange-pubsub-subscriber --image=gcr.io/exchnage-pub
 
 kubectl apply -f sub.yaml
 kubectl apply -f pub.yaml
+kubectl apply -f pub-CHF.yaml
+kubectl apply -f sub-CHF.yaml
 
+## logs
+kubectl logs pubsub-publisher-77c8c7cc54-8c4xb
+kubectl scale --replicas=0 -f pub.yaml
+kubectl delete pod pubsub-publisher-77c8c7cc54-8c4xb
+
+
+
+# bash
+kubectl exec -it myapp -- bin/bash
 
 

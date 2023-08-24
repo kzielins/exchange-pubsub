@@ -10,9 +10,7 @@ from concurrent.futures import TimeoutError
 from google.cloud import pubsub_v1
 from google.api_core.exceptions import AlreadyExists
 
-#os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="exchnage-pubsub-sa.json"
-SERVICE_ACCOUNT_PATH='./exchnage-pubsub-sa.json'
-  
+SERVICE_ACCOUNT_PATH = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS",'./exchnage-pubsub-sa.json')
 PROJECT_ID = os.environ.get('PROJECT_ID',"exchnage-pubsub")
 TOPIC_ID = os.environ.get('TOPIC_ID',"my-topic")
 
