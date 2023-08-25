@@ -65,9 +65,8 @@ gcloud config set compute/zone europe-central2-a
 gcloud container clusters get-credentials  exchnage-pubsub-cmd2-cluster  --location europe-central2-a
 
 ## secrets
-https://stackoverflow.com/questions/66163784/how-i-can-send-a-credentials-json-file-to-kubernetes-pod 
-
-kubectl apply -f secret-exchnage-pubsub-sa-V2.yaml
+https://stackoverflow.com/questions/51756658/google-cloud-kubernetes-not-reading-application-credentials-correctly
+kubectl create secret generic secret--exchnage-pubsub--google-service-account-keys --from-file=exchnage-pubsub-sa-V2.json
 
 
 
@@ -95,7 +94,7 @@ kubectl scale --replicas=0 -f pub.yaml
 kubectl delete pod pubsub-publisher-77c8c7cc54-8c4xb
 
 
-
+ 
 # bash
 kubectl exec -it myapp -- bin/bash
 

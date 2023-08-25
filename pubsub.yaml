@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pubsub-publisher-chf
+  name: pubsub-publisher-subscriber
 spec:
   selector:
     matchLabels:
-      app: pubsub-publisher-chf
+      app: pubsub-publisher-subscriber
   template:
     metadata:
       labels:
-        app: pubsub-publisher-chf
+        app: pubsub-publisher-subscriber
     spec:
       volumes:
       - name: google-cloud-keys
         secret:
-          secretName: gac-keys 
+          secretName: gac-keys
       containers:
-      - name: publisher-chf
+      - name: publisher
         image: gcr.io/exchnage-pubsub/exchange-pubsub-exch-publisher:latest
         volumeMounts:
         - name: google-cloud-keys
@@ -25,10 +25,13 @@ spec:
         env:
         - name: GOOGLE_APPLICATION_CREDENTIALS
           value: /var/secrets/google/exchnage-pubsub-sa-V2.json
-        - name: TOPIC_ID
-          value: "exch_CHFPLN"
-        - name: EXCH_URL
-          value: "https://internetowykantor.pl/kurs-franka/"
-        - name: SUBSCRIPTION_ID
-          value: "sub_CHFPLN"
+      - name: subscriber
+        image: gcr.io/exchnage-pubsub/exchange-pubsub-exch-subscriber:latest
+        volumeMounts:
+        - name: google-cloud-keys
+          mountPath: /var/secrets/google
+          readOnly: true
+        env:
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          value: /var/secrets/google/exchnage-pubsub-sa-V2.json
 

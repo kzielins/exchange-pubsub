@@ -1,6 +1,6 @@
 FROM python:latest
 WORKDIR /code
-ADD exchnage-pubsub-sa.json exchnage-pubsub-sa.json
+#ADD exchnage-pubsub-sa.json exchnage-pubsub-sa.json
 ADD requirements.txt requirements.txt
 
 ENV GOOGLE_APPLICATION_CREDENTIALS=./exchnage-pubsub-sa.json

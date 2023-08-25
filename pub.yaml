@@ -12,13 +12,16 @@ spec:
         app: pubsub-publisher
     spec:
       volumes:
-      - name: google-cloud-key
+      - name: google-cloud-keys
         secret:
-          secretName: pubsub-key
+          secretName: gac-keys
       containers:
       - name: publisher
         image: gcr.io/exchnage-pubsub/exchange-pubsub-exch-publisher:latest
         volumeMounts:
-        - name: google-cloud-key
+        - name: google-cloud-keys
           mountPath: /var/secrets/google
           readOnly: true
+        env:
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          value: /var/secrets/google/exchnage-pubsub-sa-V2.json
